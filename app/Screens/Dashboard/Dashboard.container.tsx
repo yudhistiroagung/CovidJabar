@@ -24,9 +24,7 @@ const DashboardContainer: React.FC = () => {
   if (!!loading || !!error) {
     return <DashboardDefense retry={fetch} loading={loading} />;
   }
-
   return <DashboardComponent {...props} />;
-    
 }
 
 export default DashboardContainer;
