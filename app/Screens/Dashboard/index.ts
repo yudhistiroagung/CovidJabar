@@ -1,1 +1,1 @@
-export { default as DashboardScreen } from './Dashboard.screen';
+export { default as DashboardScreen } from './Dashboard.container';

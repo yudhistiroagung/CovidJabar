@@ -4,19 +4,11 @@ import {
 } from 'react-native';
 
 import { useCovidCases } from '../../Hooks';
-import style from './Dashboard.style';
+import DashboardComponent from './Dashboard.component';
 
 const Dashboard = () => {
-  const { fetch, data, error } = useCovidCases();
-
-  useEffect(() => {
-    fetch()
-  }, []);
-
   return (
-    <View style={style.container}>
-      
-    </View>
+    <DashboardComponent />
   );
 }
 

@@ -1,16 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
-import { colors, dimens } from '../../Themes';
+import { colors, dimens, fonts } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colors.grey,
+    backgroundColor: colors.white,
     ...dimens.window
   },
-  text: {
-    color: colors.primary
-  }
+  mapContainer: {
+    width: dimens.window.width,
+    height: 280,
+    backgroundColor: colors.light,
+    marginBottom: 80,
+  },
+  overview: {
+    marginTop: 210,
+  },
+  detail: {
+    flex: 1,
+    backgroundColor: colors.white
+  },
 })
