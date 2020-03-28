@@ -12,7 +12,7 @@ const renderOverviewItem = ({ title, value }: OverviewItemProps) => (
     <Text style={s.overviewItemTitle}>{title}</Text>
     <Text style={s.overviewItemValue}>{value}</Text>
   </View>
-)
+);
 
 const renderSeparator = () => (<View style={s.separator} />);
 
