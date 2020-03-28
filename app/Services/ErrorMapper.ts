@@ -4,7 +4,8 @@ import { ApiError } from '../Models';
 
 
 export default (e: AxiosError) => {
-  let code = 'SometihngWentWrong';
+  console.log('masuk', e);
+  let code = 'SomethingWentWrong';
   // switch(e.code) {
     
   // }

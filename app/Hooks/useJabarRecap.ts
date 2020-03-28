@@ -18,14 +18,15 @@ interface HandlerProps {
 }
 
 const getRecapHandler = ({ setRecap, setLoading, setError }: HandlerProps) => async () => {
-  setLoading(true)
+  setLoading(true);
+  setError(undefined);
   try {
     const recap = await JabarCovidService.getRecap();
     setRecap(recap);
   } catch (e) {
-    setError(e as ApiError)
+    setError(e as ApiError);
   } finally {
-    setLoading(false)
+    setLoading(false);
   }
 }
 

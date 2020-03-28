@@ -18,6 +18,7 @@ interface HandlerProps {
 
 const getCasesHandler = ({ setCases, setLoading, setError }: HandlerProps) => async () => {
   setLoading(true);
+  setError(undefined);
   try {
     const cases = await JabarCovidService.getCases();
     setCases(prev => {
@@ -25,11 +26,11 @@ const getCasesHandler = ({ setCases, setLoading, setError }: HandlerProps) => as
         ...prev.splice(0, 0),
         ...cases
       ]
-    })
+    });
   } catch (e) {
-    setError(e as ApiError)
+    setError(e as ApiError);
   } finally {
-    setLoading(false)
+    setLoading(false);
   }
 }
 
