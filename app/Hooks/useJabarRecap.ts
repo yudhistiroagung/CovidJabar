@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, SetStateAction } from 'react';
 
 import { JabarCovidService } from '../Services';
 import { ApiError, JabarRecap } from '../Models';
@@ -11,9 +11,9 @@ export interface UseJabarRecap {
 }
 
 interface HandlerProps {
-  setRecap: (recap: JabarRecap) => void;
-  setLoading: (isLoading: boolean) => void;
-  setError: (error: ApiError | undefined) => void;
+  setRecap: (action: SetStateAction<JabarRecap>) => void;
+  setLoading: (action: SetStateAction<boolean>) => void;
+  setError:  (action: SetStateAction<ApiError | undefined>) => void;
 }
 
 const getRecapHandler = ({ setRecap, setLoading, setError }: HandlerProps) => async () => {

@@ -3,11 +3,11 @@ import {
   View,
 } from 'react-native';
 
-import { useJabarRecap } from '../../Hooks';
+import { useCovidCases } from '../../Hooks';
 import style from './Dashboard.style';
 
 const Dashboard = () => {
-  const { fetch, data, error } = useJabarRecap();
+  const { fetch, data, error } = useCovidCases();
 
   useEffect(() => {
     fetch()
