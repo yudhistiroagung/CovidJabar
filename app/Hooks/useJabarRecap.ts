@@ -2,9 +2,10 @@ import { useState, SetStateAction } from 'react';
 
 import { JabarCovidService } from '../Services';
 import { ApiError, JabarRecap } from '../Models';
+import { jabarRecapInitialState } from '../Fixtures';
 
 export interface UseJabarRecap {
-  fetch: () => void;
+  fetch: () => Promise<void>;
   data: JabarRecap;
   loading: boolean;
   error: ApiError;
@@ -13,7 +14,7 @@ export interface UseJabarRecap {
 interface HandlerProps {
   setRecap: (action: SetStateAction<JabarRecap>) => void;
   setLoading: (action: SetStateAction<boolean>) => void;
-  setError:  (action: SetStateAction<ApiError | undefined>) => void;
+  setError: (action: SetStateAction<ApiError | undefined>) => void;
 }
 
 const getRecapHandler = ({ setRecap, setLoading, setError }: HandlerProps) => async () => {
@@ -28,19 +29,7 @@ const getRecapHandler = ({ setRecap, setLoading, setError }: HandlerProps) => as
   }
 }
 
-const initialState: JabarRecap = {
-  kode_prov: 0,
-  nama_prov: '',
-  odp_proses: 0,
-  odp_selesai: 0,
-  odp_total: 0,
-  pdp_proses: 0,
-  pdp_selesai: 0,
-  pdp_total: 0,
-  positif: 0,
-  sembuh: 0,
-  meninggal: 0
-}
+const initialState: JabarRecap = { ...jabarRecapInitialState }
 
 export const useJabarRecap = () => {
   const [recap, setRecap] = useState<JabarRecap>(initialState);

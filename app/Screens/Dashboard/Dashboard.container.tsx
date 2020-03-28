@@ -1,15 +1,26 @@
 import React, { useEffect } from 'react';
-import {
-  View,
-} from 'react-native';
 
-import { useCovidCases } from '../../Hooks';
+import { useCovidContext } from '../../Contexts';
 import DashboardComponent from './Dashboard.component';
+import { DashboardComponentProps } from './Dashboard.props';
 
-const Dashboard = () => {
+const DashboardContainer: React.FC = () => {
+  const { fetch, recap, cases} = useCovidContext();
+
+  useEffect(() => {
+    fetch();
+   }, []);
+
+  const props: DashboardComponentProps = {
+    cases,
+    positive: recap.positif,
+    recovered: recap.sembuh,
+    death: recap.meninggal
+  }
+
   return (
-    <DashboardComponent />
+    <DashboardComponent {...props}/>
   );
 }
 
-export default Dashboard;
+export default DashboardContainer;

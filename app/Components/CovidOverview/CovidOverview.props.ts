@@ -1,7 +1,7 @@
 import { StyleProp, ViewStyle } from "react-native";
 
-export interface CovidComponentProps {
-  positif: number;
+export interface CovidOverviewProps extends Object {
+  positive: number;
   recovered: number;
   death: number;
   style?: StyleProp<ViewStyle>

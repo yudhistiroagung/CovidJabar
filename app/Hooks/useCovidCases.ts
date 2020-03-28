@@ -4,7 +4,7 @@ import { JabarCovidService } from '../Services';
 import { CovidCase, ApiError } from '../Models';
 
 export interface UseCovidCases {
-  fetch: () => void;
+  fetch: () => Promise<void>;
   data: CovidCase[];
   loading: boolean;
   error: ApiError | undefined;

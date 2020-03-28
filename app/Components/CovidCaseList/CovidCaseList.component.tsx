@@ -1,5 +1,11 @@
 import React from 'react';
-import { FlatList, ListRenderItemInfo, View, Text, TouchableOpacity, ActivityIndicatorBase } from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  View,
+  Text,
+  TouchableOpacity
+} from 'react-native';
 
 import { CovidCase } from '../../Models';
 import { CovidCaseListProps } from './CovidCaseList.props';

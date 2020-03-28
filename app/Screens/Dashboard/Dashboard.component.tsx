@@ -3,14 +3,15 @@ import {
   View, Text,
 } from 'react-native';
 
-import { CovidOverview, CovidCaseList  } from '../../Components';
+import { CovidOverview, CovidCaseList } from '../../Components';
+import { DashboardComponentProps } from './Dashboard.props';
 import style from './Dashboard.style';
 
-const DashboardComponent = () => (
+const DashboardComponent = ({ cases, ...props }: DashboardComponentProps) => (
   <View style={style.container} >
     <View style={style.mapContainer} />
-    <CovidOverview style={style.overview} positif={10} recovered={9} death={2} />
-    <CovidCaseList data={[]} style={style.detail} />
+    <CovidOverview style={style.overview} {...props} />
+    <CovidCaseList data={cases} style={style.detail} />
   </View>
 );
 
