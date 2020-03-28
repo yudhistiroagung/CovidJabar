@@ -24,7 +24,7 @@ class JabarCovidApi implements JabarCovidService {
 
   public async getCases(): Promise<CovidCase[]> {
     try {
-      const response: AxiosResponse<Response<CovidCase[]>> = await (await axios.get(`${BASE_URL}sebaran/jabar`));
+      const response: AxiosResponse<Response<CovidCase[]>> = await axios.get(`${BASE_URL}sebaran/jabar`);
       return response.data.data.content;
     } catch (e) {
       const err: AxiosError = e as AxiosError;
