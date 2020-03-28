@@ -6245,11 +6245,6 @@ type-fest@^0.8.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
-type-to-reducer@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/type-to-reducer/-/type-to-reducer-1.2.0.tgz#b01c4250b8197d3b7c5c1f61b53845819945649d"
-  integrity sha512-BAC6aZxuoqhLyJSX+YWTZC4Znxe8cFU8hf83D89nqt3UJ5YSfBuNzfxHdqrvD/nUlEeJ2SqyZbtUJqfL/o8MNg==
-
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
