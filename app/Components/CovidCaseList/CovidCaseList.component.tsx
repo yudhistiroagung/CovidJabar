@@ -1,27 +1,38 @@
 import React from 'react';
-import { FlatList, ListRenderItemInfo, View, Text } from 'react-native';
+import { FlatList, ListRenderItemInfo, View, Text, TouchableOpacity, ActivityIndicatorBase } from 'react-native';
 
 import { CovidCase } from '../../Models';
 import { CovidCaseListProps } from './CovidCaseList.props';
 import { ItemClickHandler } from 'app/Types';
 import s from './CovidCaseList.style';
 
+const onPress = (
+  item: CovidCase,
+  index: number,
+  clickHandler?: ItemClickHandler<CovidCase>,
+) => () => {
+  if (clickHandler)
+    clickHandler(item, index)
+}
+
 const renderItem =
   (clickHandler?: ItemClickHandler<CovidCase>) =>
-    ({ item }: ListRenderItemInfo<CovidCase>) => {
+    ({ item, index }: ListRenderItemInfo<CovidCase>) => {
+
       return (
-        <View style={s.container}>
+        <TouchableOpacity style={s.container}
+          onPress={onPress(item, index, clickHandler)}>
           <View style={s.statusContainer}>
             <Text style={s.status}>{item.status}</Text>
           </View>
           <Text style={s.info}>{`${item.gender} (${item.umur})`}</Text>
-        </View>
+        </TouchableOpacity>
       )
     }
 
 const ItemSeparator = () => (<View style={s.separator} />);
 
-const keyExtractor = (item: CovidCase, index: number) => `${item.id}.${index}`; 
+const keyExtractor = (item: CovidCase, index: number) => `${item.id}.${index}`;
 
 const EmptyComponent = () => (<Text style={s.empty}>No Case Found!</Text>)
 
