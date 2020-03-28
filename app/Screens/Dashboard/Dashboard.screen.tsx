@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  Text,
   View,
 } from 'react-native';
 
+import { useJabarRecap } from '../../Hooks';
 import style from './Dashboard.style';
 
-const Dashboard = () => (
-  <View style={style.container}>
-    
-  </View>
-);
+const Dashboard = () => {
+  const { fetch, data, error } = useJabarRecap();
+
+  useEffect(() => {
+    fetch()
+  }, []);
+
+  return (
+    <View style={style.container}>
+      
+    </View>
+  );
+}
 
 export default Dashboard;

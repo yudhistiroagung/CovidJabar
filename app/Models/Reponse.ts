@@ -3,7 +3,7 @@ export interface Response<T> {
   data: {
     metadata: {
       last_update?: string
-    }
+    },
+    content: T
   }
-  content: T
 }

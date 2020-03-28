@@ -1,4 +1,4 @@
-export class CovidError extends Error {
+export class ApiError extends Error {
 
   public code: string;
   public data: any;

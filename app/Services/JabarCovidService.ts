@@ -15,7 +15,7 @@ class JabarCovidApi implements JabarCovidService {
   public async getRecap(): Promise<JabarRecap> {
     try {
       const response: AxiosResponse<Response<JabarRecap>> = await axios.get(`${BASE_URL}rekapitulasi/jabar`);
-      return response.data.content;
+      return response.data.data.content;
     } catch (e) {
       const err: AxiosError = e as AxiosError;
       throw errorMapper(err)
@@ -24,14 +24,14 @@ class JabarCovidApi implements JabarCovidService {
 
   public async getCases(): Promise<CovidCase[]> {
     try {
-      const response: AxiosResponse<Response<CovidCase[]>> = await axios.get(`${BASE_URL}sebaran/jabar`);
-      return response.data.content;
+      const response: AxiosResponse<Response<CovidCase[]>> = await (await axios.get(`${BASE_URL}sebaran/jabar`));
+      return response.data.data.content;
     } catch (e) {
       const err: AxiosError = e as AxiosError;
       throw errorMapper(err)
     }
   }
-  
+
 }
 
 export default new JabarCovidApi();

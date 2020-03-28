@@ -1,0 +1,1 @@
+export {default as JabarCovidService} from './JabarCovidService';

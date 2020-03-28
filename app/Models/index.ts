@@ -1,4 +1,4 @@
 export * from './Reponse';
 export * from './JabarRecap';
 export * from './CovidCase';
-export * from './CovidError';
+export * from './ApiError';
