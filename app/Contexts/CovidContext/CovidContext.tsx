@@ -5,9 +5,9 @@ import React, {
 
 import createContext from '../createContext';
 import { JabarRecap, CovidCase, ApiError } from '../../Models';
-import { useJabarRecap, useCovidCases } from '../../Hooks';
+import { useJabarRecap, useCovidCases, useCaseMap, UseCaseMap } from '../../Hooks';
 
-export interface CovidContextProps {
+export interface CovidContextProps extends UseCaseMap {
   fetch: () => Promise<void>;
   recap: JabarRecap;
   cases: CovidCase[];
@@ -29,6 +29,7 @@ const fetchAll = (
 const useComposeHooks = (): CovidContextProps => {
   const recap = useJabarRecap();
   const cases = useCovidCases();
+  const caseMap = useCaseMap();
 
   const fetch = fetchAll(recap.fetch, cases.fetch);
   const loading = recap.loading || cases.loading;
@@ -39,7 +40,8 @@ const useComposeHooks = (): CovidContextProps => {
     loading,
     error,
     recap: recap.data,
-    cases: cases.data
+    cases: cases.data,
+    ...caseMap,
   } as CovidContextProps;
 }
 

@@ -1,7 +1,8 @@
 import { CovidOverviewProps } from '../../Components';
 import { CovidCase } from '../../Models';
+import { UseCaseMap } from '../../Hooks';
 
-export interface DashboardComponentProps extends Omit<CovidOverviewProps, 'style'> {
+export interface DashboardComponentProps extends Omit<CovidOverviewProps, 'style'>, UseCaseMap {
   cases: CovidCase[];
 }
 

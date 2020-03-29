@@ -8,7 +8,7 @@ import DashboardDefense from './Dashboard.defense';
 import { DashboardComponentProps } from './Dashboard.props';
 
 const DashboardContainer: React.FC = () => {
-  const { fetch, recap, cases, loading, error } = useCovidContext();
+  const { fetch, recap, cases, loading, error, case: CASE, pointTo } = useCovidContext();
 
   useEffect(() => {
     fetch();
@@ -18,7 +18,9 @@ const DashboardContainer: React.FC = () => {
     cases,
     positive: recap.positif,
     recovered: recap.sembuh,
-    death: recap.meninggal
+    death: recap.meninggal,
+    case: CASE, 
+    pointTo,
   }
 
   if (!!loading || !!error) {

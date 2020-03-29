@@ -8,9 +8,6 @@ export default StyleSheet.create({
     ...dimens.window
   },
   mapContainer: {
-    width: dimens.window.width,
-    height: 280,
-    backgroundColor: colors.light,
     marginBottom: 80,
   },
   overview: {
