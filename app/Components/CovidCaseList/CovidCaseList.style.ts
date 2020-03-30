@@ -42,5 +42,8 @@ export default StyleSheet.create({
     color: colors.primary,
     fontSize: fonts.size.huge,
     alignSelf: 'center'
+  },
+  selected: {
+    backgroundColor: colors.lightGrey,
   }
 })

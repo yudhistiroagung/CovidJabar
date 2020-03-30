@@ -26,7 +26,7 @@ const renderItem =
     ({ item, index }: ListRenderItemInfo<CovidCase>) => {
       const isSelected = selected === index;
       return (
-        <TouchableOpacity style={[s.container, isSelected && {backgroundColor: '#e6e6e6'}]}
+        <TouchableOpacity style={[s.container, isSelected && s.selected]}
           onPress={onPress(item, index, clickHandler)}>
           <View style={s.statusContainer}>
             <Text style={s.status}>{item.status}</Text>
@@ -49,7 +49,6 @@ const CovidCaseList = (props: CovidCaseListProps) => {
 
   const onItemClick: ItemClickHandler<CovidCase|undefined> = (c?: CovidCase, index?: number) => {
     if(props.onItemClick) {
-      console.log('ngok', index);
       if (selected === index) {
         setSelected(unselectedIndex);
         props.onItemClick(undefined);
@@ -60,7 +59,6 @@ const CovidCaseList = (props: CovidCaseListProps) => {
       }
     }
   }
-  console.log('indexz', selected);
 
   return (
     <FlatList
