@@ -55,7 +55,7 @@ const CaseMap: React.FC<CaseMapProps> = ({ style, location }) => {
       scrollEnabled={false}
       zoomEnabled={false}
     >
-      {location.location && (
+      {location.isCase && (
         <Marker
           coordinate={location.location}
         />)}

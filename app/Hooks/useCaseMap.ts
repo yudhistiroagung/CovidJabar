@@ -34,7 +34,7 @@ const initialState: UseCaseMapState = {
 const pontToCaseHandler = (setState: (action: SetStateAction<UseCaseMapState>) => void) => (c?: CovidCase) => {
   const newCase: CaseInfo | undefined = !!c
     ? {
-      zoom: 13,
+      zoom: 14,
       location: {
         latitude: c.latitude,
         longitude: c.longitude
