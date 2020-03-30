@@ -10,4 +10,4 @@ All data is obtained from `https://covid19-public.digitalservice.id/api/v1/`
 - Map
 
 ## Preview
-![](preview/covidjabar-android.gif){ width=30% }
+![](preview/covidjabar-android.gif)
