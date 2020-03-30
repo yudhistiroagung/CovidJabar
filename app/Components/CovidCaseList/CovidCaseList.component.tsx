@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FlatList,
   ListRenderItemInfo,
@@ -22,11 +22,11 @@ const onPress = (
 }
 
 const renderItem =
-  (clickHandler?: ItemClickHandler<CovidCase>) =>
+  (selected: number, clickHandler?: ItemClickHandler<CovidCase>) =>
     ({ item, index }: ListRenderItemInfo<CovidCase>) => {
-
+      const isSelected = selected === index;
       return (
-        <TouchableOpacity style={s.container}
+        <TouchableOpacity style={[s.container, isSelected && {backgroundColor: '#e6e6e6'}]}
           onPress={onPress(item, index, clickHandler)}>
           <View style={s.statusContainer}>
             <Text style={s.status}>{item.status}</Text>
@@ -40,17 +40,38 @@ const ItemSeparator = () => (<View style={s.separator} />);
 
 const keyExtractor = (item: CovidCase, index: number) => `${item.id}.${index}`;
 
-const EmptyComponent = () => (<Text style={s.empty}>No Case Found!</Text>)
+const EmptyComponent = () => (<Text style={s.empty}>No Case Found!</Text>);
 
-const CovidCaseList = (props: CovidCaseListProps) => (
-  <FlatList
-    style={props.style}
-    data={props.data}
-    renderItem={renderItem(props.onItemClick)}
-    ItemSeparatorComponent={ItemSeparator}
-    keyExtractor={keyExtractor}
-    ListEmptyComponent={EmptyComponent}
-  />
-);
+const unselectedIndex: number = -1;
+
+const CovidCaseList = (props: CovidCaseListProps) => {
+  const [selected, setSelected] = useState<number>(-1);
+
+  const onItemClick: ItemClickHandler<CovidCase|undefined> = (c?: CovidCase, index?: number) => {
+    if(props.onItemClick) {
+      console.log('ngok', index);
+      if (selected === index) {
+        setSelected(unselectedIndex);
+        props.onItemClick(undefined);
+      } else {
+        const idx: number = index === undefined ? unselectedIndex : index
+        setSelected(idx);
+        props.onItemClick(c, index);
+      }
+    }
+  }
+  console.log('indexz', selected);
+
+  return (
+    <FlatList
+      style={props.style}
+      data={props.data}
+      renderItem={renderItem(selected, onItemClick)}
+      ItemSeparatorComponent={ItemSeparator}
+      keyExtractor={keyExtractor}
+      ListEmptyComponent={EmptyComponent}
+    />
+  );
+}
 
 export default React.memo(CovidCaseList);

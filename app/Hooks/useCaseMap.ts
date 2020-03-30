@@ -3,6 +3,11 @@ import { LatLng } from 'react-native-maps';
 
 import { CovidCase } from '../Models';
 
+const jabarLocation: LatLng = {
+  latitude: -6.9032739,
+  longitude: 107.5729448,
+}
+
 export interface UseCaseMap {
   case: CaseInfo;
   pointTo: (c: CovidCase) => void;
@@ -23,8 +28,7 @@ const initialState: UseCaseMapState = {
   jabar: {
     zoom: 8,
     location: {
-      latitude: -6.9032739,
-      longitude: 107.5729448,
+      ...jabarLocation,
     },
     isCase: false,
   },
@@ -34,12 +38,13 @@ const initialState: UseCaseMapState = {
 const pontToCaseHandler = (setState: (action: SetStateAction<UseCaseMapState>) => void) => (c?: CovidCase) => {
   const newCase: CaseInfo | undefined = !!c
     ? {
-      zoom: 14,
+      zoom: 12,
       location: {
-        latitude: c.latitude,
-        longitude: c.longitude
+        latitude: c.latitude || jabarLocation.latitude,
+        longitude: c.longitude || jabarLocation.longitude,
       },
-      isCase: true }
+      isCase: true
+    }
     : undefined;
   setState((prevState: UseCaseMapState) => ({
     ...prevState,
