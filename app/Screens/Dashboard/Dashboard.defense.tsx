@@ -1,5 +1,11 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 
 import { colors, fonts, dimens } from '../../Themes';
 import { DashboardDefenseProps } from './Dashboard.props';
@@ -12,6 +18,7 @@ const renderRetry = (retry: () => void) => (
 
 const renderError = (retry: () => void) => (
   <>
+    <Text style={s.message}>Something went wrong with our end!</Text>
     {renderRetry(retry)}
   </>
 )
